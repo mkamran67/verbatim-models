@@ -1,6 +1,6 @@
 import unittest
 
-from check_updates import apply_vosk_update, newer_vosk, whisper_drift
+from check_updates import apply_vosk_update, newer_vosk, sha256_of, whisper_drift
 
 VOSK_LIST = [
     {"name": "vosk-model-small-en-us-0.15", "obsolete": "false", "size": 41205931,
@@ -34,12 +34,19 @@ class NewerVosk(unittest.TestCase):
 
 class ApplyVoskUpdate(unittest.TestCase):
     def test_moves_old_name_into_previous_names(self):
-        entry = {"name": "vosk-model-small-en-us-0.15", "url": "old", "sizeBytes": 1, "previousNames": []}
-        apply_vosk_update(entry, VOSK_LIST[2])
+        entry = {"name": "vosk-model-small-en-us-0.15", "url": "old", "sizeBytes": 1, "sha256": "old", "previousNames": []}
+        apply_vosk_update(entry, VOSK_LIST[2], "ab" * 32)
         self.assertEqual(entry["name"], "vosk-model-small-en-us-0.22")
         self.assertEqual(entry["url"], VOSK_LIST[2]["url"])
         self.assertEqual(entry["sizeBytes"], 42000000)
         self.assertEqual(entry["previousNames"], ["vosk-model-small-en-us-0.15"])
+        self.assertEqual(entry["sha256"], "ab" * 32)
+
+
+class Sha256Of(unittest.TestCase):
+    def test_hashes_streamed_bytes(self):
+        import io
+        self.assertEqual(sha256_of(io.BytesIO(b"hello")), "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824")
 
 
 class WhisperDrift(unittest.TestCase):

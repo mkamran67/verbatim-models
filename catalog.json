@@ -6,6 +6,7 @@
       "displayName": "Whisper Tiny (ONNX, multilingual)",
       "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-whisper-tiny.tar.bz2",
       "sizeBytes": 116204861,
+      "sha256": "c46116994e539aa165266d96b325252728429c12535eb9d8b6a2b10f129e66b1",
       "previousNames": []
     },
     {
@@ -13,6 +14,7 @@
       "displayName": "Whisper Base (ONNX, multilingual)",
       "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-whisper-base.tar.bz2",
       "sizeBytes": 207557382,
+      "sha256": "911b2083efd7c0dca2ac3b358b75222660dc09fb716d64fbfc417ba6c99ff3de",
       "previousNames": []
     }
   ],
@@ -24,6 +26,7 @@
       "languageDisplay": "English (US)",
       "url": "https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip",
       "sizeBytes": 40000000,
+      "sha256": "30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498",
       "previousNames": []
     },
     {
@@ -33,6 +36,7 @@
       "languageDisplay": "English (US)",
       "url": "https://alphacephei.com/vosk/models/vosk-model-en-us-0.22-lgraph.zip",
       "sizeBytes": 128000000,
+      "sha256": "d9838b4aaa82a75c4a17f5aca300eaca129aaab2a7cbf951bafbb500eb9c4334",
       "previousNames": []
     },
     {
@@ -42,6 +46,7 @@
       "languageDisplay": "Spanish",
       "url": "https://alphacephei.com/vosk/models/vosk-model-small-es-0.42.zip",
       "sizeBytes": 39000000,
+      "sha256": "09b239888f633ef2f0b4e09736e3d9936acfd810bc65d53fad45261762c6511f",
       "previousNames": []
     },
     {
@@ -51,6 +56,7 @@
       "languageDisplay": "French",
       "url": "https://alphacephei.com/vosk/models/vosk-model-small-fr-0.22.zip",
       "sizeBytes": 41000000,
+      "sha256": "cabf6180e177eb9b3a9a9d43a437bd5e549f3a7d09525e5d69a3fed787be12ad",
       "previousNames": []
     },
     {
@@ -60,6 +66,7 @@
       "languageDisplay": "German",
       "url": "https://alphacephei.com/vosk/models/vosk-model-small-de-0.15.zip",
       "sizeBytes": 45000000,
+      "sha256": "b7e53c90b1f0a38456f4cd62b366ecd58803cd97cd42b06438e2c131713d5e43",
       "previousNames": []
     },
     {
@@ -69,6 +76,7 @@
       "languageDisplay": "Portuguese",
       "url": "https://alphacephei.com/vosk/models/vosk-model-small-pt-0.3.zip",
       "sizeBytes": 31000000,
+      "sha256": "6e1ce909032e1afa7a88e68a3d628ecafff302bdf195befab308826c395e93b7",
       "previousNames": []
     },
     {
@@ -78,6 +86,7 @@
       "languageDisplay": "Italian",
       "url": "https://alphacephei.com/vosk/models/vosk-model-small-it-0.22.zip",
       "sizeBytes": 48000000,
+      "sha256": "9ec65e75861d1c6c2e457cccd932705340dcdf233f5b239f00733b4de0bf3267",
       "previousNames": []
     },
     {
@@ -87,6 +96,7 @@
       "languageDisplay": "Russian",
       "url": "https://alphacephei.com/vosk/models/vosk-model-small-ru-0.22.zip",
       "sizeBytes": 45000000,
+      "sha256": "961d5ff98a17f4aa6de69864d0aa71fa5bac682301d2b5d17a3f24c5c99a46d4",
       "previousNames": []
     }
   ]

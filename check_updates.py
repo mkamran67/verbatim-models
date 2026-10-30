@@ -6,10 +6,14 @@ Usage: python3 check_updates.py [--write]
 Vosk: compares each entry with alphacephei's model-list.json and, with --write,
 moves an entry to the newest non-obsolete version of the same family, keeping
 the old name in previousNames so installed copies show "Update available".
+--write downloads the new archive once to record its sha256, which the app
+checks before extracting.
 
 Whisper: compares sizes with the sherpa-onnx asr-models GitHub release. Upstream
-re-publishes in place under the same name, so drift is reported for manual review.
+re-publishes in place under the same name, so drift is reported for manual review;
+a re-published archive also needs its sha256 updated by hand.
 """
+import hashlib
 import json
 import re
 import sys
@@ -40,11 +44,25 @@ def newer_vosk(name, model_list):
     return best
 
 
-def apply_vosk_update(entry, model):
+def apply_vosk_update(entry, model, sha256):
     entry["previousNames"] = entry.get("previousNames", []) + [entry["name"]]
     entry["name"] = model["name"]
     entry["url"] = model["url"]
     entry["sizeBytes"] = model["size"]
+    entry["sha256"] = sha256
+
+
+def sha256_of(stream):
+    digest = hashlib.sha256()
+    for chunk in iter(lambda: stream.read(1 << 20), b""):
+        digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _download_sha256(url):
+    request = urllib.request.Request(url, headers={"User-Agent": "verbatim-models-check"})
+    with urllib.request.urlopen(request, timeout=300) as response:
+        return sha256_of(response)
 
 
 def whisper_drift(entries, asset_sizes):
@@ -75,7 +93,7 @@ def main(write):
         if model:
             updates.append(f"{entry['name']} -> {model['name']}")
             if write:
-                apply_vosk_update(entry, model)
+                apply_vosk_update(entry, model, _download_sha256(model["url"]))
     drift = whisper_drift(catalog["whisperOnnx"], assets)
 
     for line in updates:
